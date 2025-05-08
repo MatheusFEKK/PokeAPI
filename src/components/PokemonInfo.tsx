@@ -1,5 +1,6 @@
-import { Animated, Modal, View } from "react-native";
+import { Animated, Modal, useAnimatedValue, View, Text } from "react-native";
 import { styles } from "../style/style";
+import { useEffect, useState } from "react";
 
 type ModalProps = {
     visibility: boolean;
@@ -8,25 +9,17 @@ type ModalProps = {
 
 
 const PokemonInfo:React.FC<ModalProps> = (props) => {
+    
+
+    useEffect(() => {
+        
+    },[])
+
     return(
         <Modal style={styles.modalPokemonInfo} visible={props.visibility}>
-            <Animated.View style={styles.Block1}>
-                <View style={styles.Circle1}>
-                    <View style={styles.CircleInside}>
-                        <View style={styles.CircleInsideCircle}>
-                        </View>
-                    </View>
-                </View>
-            </Animated.View>
-
-            <Animated.View style={styles.Block2}>
-                <View style={styles.Circle2}>
-                    <View style={styles.CircleInside2}>
-                        <View style={styles.CircleInsideCircle2}>
-                        </View>
-                    </View>
-                </View>
-            </Animated.View>
+            
+                    
+                        
         </Modal>
     );
 }

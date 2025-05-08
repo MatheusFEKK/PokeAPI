@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     borderColor:'#DB68D0',
   },
   modalPokemonInfo:{
-
+    
   },
   Block1:{
     alignItems:'center',
@@ -37,35 +37,37 @@ export const styles = StyleSheet.create({
   },
   CircleInside:{
     alignItems:'center',
+    position:'relative',
     width:50, 
     height:40,
-    position:'relative',
     borderTopRightRadius:110,
     borderTopLeftRadius:110,
     backgroundColor:'white',
     bottom:-10
   },
   CircleInsideCircle:{
+    position:'relative',
+    top:10,
     width:30,
     height:30,
-    position:'relative',
-    borderRadius:'100%',
+    borderBottomWidth:0,
+    borderTopRightRadius:'100%',
+    borderTopLeftRadius:'100%',
     borderColor:'black',
     borderWidth:5,
-    bottom:-10
   },
   Block2:{
     alignItems:'center',
-    backgroundColor:'#fe0000',
+    backgroundColor:'#FFFFFF',
     width:400,
-    height:380,
+    height:350,
     borderBottomColor:'black',
     borderTopWidth:15
   },
   Circle2:{
     position:'absolute',
-    top:-25,
     alignItems:'center',
+    top:-30,
     width:80,
     height:50,
     borderBottomRightRadius:110,
@@ -83,10 +85,10 @@ export const styles = StyleSheet.create({
   CircleInsideCircle2:{
     width:30,
     height:30,
+    borderTopWidth:0,
     borderBottomRightRadius:'100%',
     borderBottomLeftRadius:'100%',
     borderColor:'black',
     borderWidth:5,
-    
   }
 })
