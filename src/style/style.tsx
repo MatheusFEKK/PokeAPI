@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container:{
@@ -8,14 +8,24 @@ export const styles = StyleSheet.create({
     justifyContent:'center',
     flexDirection:'row',
     flexWrap:'wrap',
-    gap:30
+    gap:30,
   },
   pokemonBlock:{
+    width:170,
+    height:150,
+    borderRadius:'100%',
+    alignItems:'center',
     borderWidth:2,
-    borderColor:'#DB68D0',
+    borderColor:'black',
   },
   modalPokemonInfo:{
-    
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  textStyle:{
+    fontWeight:'bold',
+    fontSize:20,
   },
   Block1:{
     alignItems:'center',
@@ -23,7 +33,7 @@ export const styles = StyleSheet.create({
     width:400,
     height:350,
     borderBottomColor:'black',
-    borderBottomWidth:15
+    borderBottomWidth:15,
   },
   Circle1:{
     position:'absolute',
@@ -38,12 +48,12 @@ export const styles = StyleSheet.create({
   CircleInside:{
     alignItems:'center',
     position:'relative',
-    width:50, 
+    width:50,
     height:40,
     borderTopRightRadius:110,
     borderTopLeftRadius:110,
     backgroundColor:'white',
-    bottom:-10
+    bottom:-10,
   },
   CircleInsideCircle:{
     position:'relative',
@@ -62,7 +72,7 @@ export const styles = StyleSheet.create({
     width:400,
     height:350,
     borderBottomColor:'black',
-    borderTopWidth:15
+    borderTopWidth:15,
   },
   Circle2:{
     position:'absolute',
@@ -76,7 +86,7 @@ export const styles = StyleSheet.create({
   },
   CircleInside2:{
       alignItems:'center',
-      width:50, 
+      width:50,
       height:40,
       borderBottomRightRadius:110,
       borderBottomLeftRadius:110,
@@ -90,5 +100,5 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius:'100%',
     borderColor:'black',
     borderWidth:5,
-  }
-})
+  },
+});
