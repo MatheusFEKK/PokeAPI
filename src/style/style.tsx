@@ -101,4 +101,8 @@ export const styles = StyleSheet.create({
     borderColor:'black',
     borderWidth:5,
   },
+  bottomTab:{
+    alignItems:'center',
+    height:80,
+  }
 });
