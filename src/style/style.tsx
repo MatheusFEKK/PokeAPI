@@ -104,5 +104,26 @@ export const styles = StyleSheet.create({
   bottomTab:{
     alignItems:'center',
     height:80,
+  },
+  buttonClose:{
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor:'#D0312D',
+    width:30,
+    height:30,
+    borderRadius:5,
+  },
+  shadow:{
+    shadowColor:'#000',
+    shadowOffset: {width: 2, height: 6},
+    shadowOpacity:0.37,
+    shadowRadius:2,
+    elevation:5,
+  },
+  headerContainer:{
+    position:'absolute',
+    alignSelf:'flex-end',
+    margin:10,
+    top:10,
   }
 });
