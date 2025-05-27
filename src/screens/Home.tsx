@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, Image, useAnimatedValue, Animated, Linking } from 'react-native';
+import React, { act, useEffect, useState } from 'react';
+import { ScrollView, View, Text, TouchableOpacity, Image, useAnimatedValue, Animated, Linking, PermissionsAndroid } from 'react-native';
 import { styles } from '../style/style';
 import { Pokemon } from '../type/Pokemon';
 import PokemonInfo from '../components/PokemonInfo';
+import { Camera, useCameraDevice, useCameraPermission, useCodeScanner } from 'react-native-vision-camera';
 
 export const Home: React.FC = () => {
     const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -20,6 +21,21 @@ export const Home: React.FC = () => {
     const positionRedSide      = useAnimatedValue(0);
     const positionWhiteSide    = useAnimatedValue(-700);
 
+    const [ activeCamera, setCamera ] = useState(false);
+    const devices = useCameraDevice('back')!;
+    const { hasPermission, requestPermission } = useCameraPermission();
+    const codeScanner = useCodeScanner({
+        codeTypes: ['qr', 'ean-13'],
+        onCodeScanned: (codes) => {
+          for (const code of codes)
+          {
+            const valueCode = code.value;
+            const route = valueCode?.toString().replace('pokeapi://', '');
+              setPokemonSelect(Number(route));
+              setVisible(true);
+          }
+      }
+    })
 
     const AnimationOnLoad = () => {
       if (animationRunning === true)
@@ -47,7 +63,6 @@ export const Home: React.FC = () => {
     useEffect(() => {
       AnimationOnLoad();
       fetchPokemons();
-
     },[]);
 
     useEffect(() => {
@@ -99,6 +114,37 @@ export const Home: React.FC = () => {
       console.log(URLApp);
     };
 
+    if (hasPermission == false)
+    {
+        return(
+            <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                <TouchableOpacity onPress={() => requestPermission()}>
+                    <Text>Permitir camera</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
+    if (devices == null)
+    {
+        return(
+            <View>
+                <Text>No device</Text>
+            </View>
+        );
+    }
+  if (activeCamera == true)
+  {
+    return(
+        <View style={{flex:1}}>
+            <Camera style={{flex:1}} device={devices} isActive={activeCamera} codeScanner={codeScanner} />
+            <TouchableOpacity onPress={() => setCamera(false)}>
+              <Text>X</Text>
+            </TouchableOpacity>
+        </View> 
+    );
+  }
+
   return(
     <ScrollView style={styles.container}>
     {animationRunning ? (
@@ -126,6 +172,12 @@ export const Home: React.FC = () => {
 
        </View>
     ) : <View style={styles.pokemonsView}>
+      <View style={{width:'100%'}}> 
+        
+        <TouchableOpacity onPress={() => setCamera(true)}>
+          <Image source={require('../images/cameraIcon.png')} />
+        </TouchableOpacity> 
+        </View>
       <PokemonInfo visibility={visible} changeVisibility={() => setVisible(false)} pokemonSelected={pokemonSelected}/>
     { pokemons.map((pokemon, index) =>
       <TouchableOpacity style={styles.pokemonBlock} onPress={() => {setVisible(true); setPokemonSelect(index);}} key={index}>
