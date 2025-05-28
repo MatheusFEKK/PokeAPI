@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Modal, View, Image, Text, Linking, TouchableOpacity } from 'react-native';
+import { Modal, View, Image, Text, TouchableOpacity } from 'react-native';
 import { styles } from '../style/style';
 import { useEffect, useState } from 'react';
 import { Pokemon } from '../type/Pokemon';
@@ -20,7 +20,6 @@ const PokemonInfo:React.FC<ModalProps> = (props) => {
             console.log(props.pokemonSelected + `https://pokeapi.co/api/v2/pokemon/${props.pokemonSelected}/`);
             fetchPokemon();
             getColor();
-            
 
     },[props.pokemonSelected]);
 
@@ -68,20 +67,22 @@ const PokemonInfo:React.FC<ModalProps> = (props) => {
             {
                 console.log("Something goes wrong while trying to get the pokemon's color " + error);
             }
-        } 
+        };
 
 
     return(
         <Modal visible={props.visibility}>
-            <View style={[styles.modalPokemonInfo, {backgroundColor:String(pokemonColor?.color.name)}]}>
+            <View style={{position:'absolute', width:'100%', height:'100%', backgroundColor:String(pokemonColor?.color.name), opacity:0.7}}>
+            </View>
+            <View style={[styles.modalPokemonInfo]}>
                 <View style={[styles.headerContainer]}>
                     <TouchableOpacity style={[styles.buttonClose, styles.shadow]} onPress={props.changeVisibility}>
                         <Text style={{color:'white'}}>X</Text>
                     </TouchableOpacity>
                 </View>
-                <View>
+                <View style={[styles.alignItemsCenter]}>
                     <Image style={{width:150, height:150}} source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.pokemonSelected}.png`}} />
-                    <Text style={styles.textStyle}>{pokemon?.name.at(0)?.toUpperCase() + String(pokemon?.name).slice(1)}</Text>
+                    <Text style={styles.textStyle}>Name: {pokemon?.name.at(0)?.toUpperCase() + String(pokemon?.name).slice(1)}</Text>
                     <Text style={styles.textStyle}>Weight: {pokemon?.weight}</Text>
                     <Text style={styles.textStyle}>Height: {pokemon?.height}</Text>
                     <Text style={styles.textStyle}>Base Experience: {pokemon?.base_experience} BXP</Text>
@@ -90,7 +91,7 @@ const PokemonInfo:React.FC<ModalProps> = (props) => {
                     ))}
                     {pokemon?.Type.map((types, index) => (
                         <Text style={styles.textStyle} key={index}>Tipo: {types.type.name} </Text>
-                    ))}  
+                    ))}
                 </View>
             </View>
         </Modal>

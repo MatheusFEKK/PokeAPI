@@ -4,6 +4,12 @@ export const styles = StyleSheet.create({
   container:{
     flex:1,
   },
+  alignItemsCenter:{
+    alignItems:'center',
+  },
+  justifyContentCenter:{
+    justifyContent:'center',
+  },
   pokemonsView:{
     justifyContent:'center',
     flexDirection:'row',
@@ -125,5 +131,29 @@ export const styles = StyleSheet.create({
     alignSelf:'flex-end',
     margin:10,
     top:10,
-  }
+  },
+  buttonRed:{
+    alignItems:'center',
+    justifyContent:'center',
+    width:240,
+    height:50,
+    backgroundColor:'red',
+    borderRadius:10,
+  },
+  fontBold:{
+    fontWeight:'bold',
+  },
+  textWhite:{
+    color:'white',
+  },
+  buttonBackFromCamera:{
+    position:'absolute',
+    alignItems:'center',
+    margin:10,
+    justifyContent:'center',
+    backgroundColor:'white',
+    width:30,
+    height:30,
+    borderRadius:5,
+  },
 });

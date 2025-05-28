@@ -1,12 +1,9 @@
-import { useEffect } from "react";
-import { View, Image, TouchableOpacity, PermissionsAndroid, Text, Linking } from "react-native";
-import { Camera, CameraDevice, useCameraDevice, useCameraPermission, useCodeScanner } from "react-native-vision-camera";
+import { View, Text } from 'react-native';
 
 export const MyPokedex:React.FC = () => {
     return(
         <View>
-            
+            <Text>Pokedex</Text>
         </View>
     );
-    
-}
+};
